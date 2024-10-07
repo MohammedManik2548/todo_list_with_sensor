@@ -14,7 +14,10 @@ dependencies:
   path_provider:
   flutter_local_notifications:
   sensors_plus:
-  syncfusion_flutter_charts: ^21.2.6
+  syncfusion_flutter_charts:
+  flutter_screenutil: ^5.9.3
+  get:
+  device_preview:
 
 dev_dependencies:
   flutter_test:
