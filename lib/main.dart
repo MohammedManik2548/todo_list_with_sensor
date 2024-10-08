@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_list/presentation/sensor_tracking/sensor_tracking_screen/sensor_traking.dart';
+import 'package:todo_list/presentation/entry_screen/entry_screen.dart';
 import 'package:todo_list/routes/app_routes.dart';
 import 'bindings/general_bindings.dart';
 import 'core/utils/theme/app_theme.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           getPages: AppRoutes.pages,
           initialBinding: GeneralBindings(),
-          home: SensorTrackingScreen(),
+          home: EntryScreen(),
         );
       },
     );

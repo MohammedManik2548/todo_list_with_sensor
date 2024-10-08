@@ -1,6 +1,7 @@
 class RouteStrings {
   static const home = '/';
   static const sensor = '/sensor';
-  // static const signup = '/signup';
-  // static const signIn = '/sign-in';
+  static const entryScreen = '/entry_screen';
+  static const todoFirstScreen = '/todo_first_screen';
+  static const todoHomeScreen = '/todo_home_screen';
 }

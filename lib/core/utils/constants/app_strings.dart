@@ -10,6 +10,11 @@ class AppStrings {
   static const String axisTitle = "Gyroscope sensor data (rad/s)";
   static const String walkingText = "Walking";
   static const String accelerometerText = "Accelerometer Sensor Data";
+  static const String buttonToDoText = "A To-Do List";
+  static const String buttonSensorText = "Sensor Tracking";
+  static const String firstText = "Daily To-Do App";
+  static const String personName = "Zoyeb Ahmed";
+  static const String subTitle = "5 incomplete, 5 completed";
 
   // // Funny Warning Message
   // static const String facebookWarning =

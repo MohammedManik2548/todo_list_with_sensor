@@ -2,6 +2,10 @@ class AppImages {
   // -- App Logos
   static const String appLogo = "assets/logo/dokan-app-logo.svg";
 
+  // -- todo
+  static const String todoImage = "assets/images/todo_first.png";
+  static const String personImage = "assets/images/person.jpeg";
+
   // -- Social Icons
   static const String facebook = "assets/icons/facebook.svg";
   static const String google = "assets/icons/google.svg";

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   /// App theme colors
-  static const Color primary = Color(0xFFF75F55);
+  static const Color primary = Color(0xFF33CCCC);
   static const Color secondary = Color(0xFFFFFFFF);
   static const Color accent = Color(0xFFFF679B);
 
@@ -34,6 +34,8 @@ class AppColors {
   static const Color textLink = Color(0xFF2893E3);
   static const Color textGrey = Color(0xFF535353);
   static const Color textInputField = Color(0xFF535353);
+  static const Color backgroundColor = Color(0xFFF8F8F8);
+  static const Color dividerGray = Colors.grey;
 
   /// graph colors
   static const Color bluebonnet = Color(0xFF2F2FFF);
@@ -47,8 +49,8 @@ class AppColors {
   static const Color customLavender = Color(0xFFD9D9FF);
 
   /// Button colors
-  static const Color buttonPrimary = Color(0xFF4b68ff);
-  static const Color buttonGreen = Color(0xFF1ABC9C);
+  static const Color buttonPrimary = Color(0xFF3F69FF);
+  static const Color buttonGreen = Color(0xFF36E0E0);
   static const Color buttonSecondary = Color(0xFF6C757D);
   static const Color buttonDisabled = Color(0xFFC4C4C4);
 

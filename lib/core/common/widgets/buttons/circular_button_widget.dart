@@ -19,9 +19,9 @@ class CircularButtonWidget extends StatelessWidget {
   const CircularButtonWidget({
     super.key,
     this.onTap,
-    this.height = 57,
-    this.width = 57,
-    this.icon = Icons.search,
+    this.height = 56,
+    this.width = 56,
+    this.icon = Icons.add,
     this.iconSize,
     this.gradient = AppColors.linearGradiant,
     this.boxShadowColor = AppColors.primary,
@@ -35,20 +35,13 @@ class CircularButtonWidget extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          gradient: gradient,
-          boxShadow: [
-            BoxShadow(
-              color: boxShadowColor.withOpacity(0.3),
-              blurRadius: 10,
-              spreadRadius: 1,
-            )
-          ],
+          color: AppColors.primary,
         ),
         alignment: Alignment.center,
         clipBehavior: Clip.antiAlias,
-        child: child ?? Icon(icon, color: Colors.white, size: iconSize),
+        child: Icon(icon, color: Colors.white, size: iconSize),
       ),
     );
   }
