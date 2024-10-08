@@ -14,12 +14,12 @@ dependencies:
   path_provider:
   flutter_local_notifications:
   sensors_plus:
-  syncfusion_flutter_charts: ^21.2.6
+  syncfusion_flutter_charts:
   flutter_screenutil: ^5.9.3
-  get:
+  get: ^4.6.6
   iconsax_flutter:
   flutter_svg:
-  device_preview:
+  device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:

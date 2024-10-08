@@ -10,13 +10,12 @@ import '../../core/utils/constants/app_sizes.dart';
 import '../../core/utils/constants/app_strings.dart';
 import '../../routes/routes.dart';
 
-
 class TodoHomeScreen extends StatelessWidget {
   const TodoHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: Container(
         margin: EdgeInsets.only(top: 78.h),
@@ -28,42 +27,39 @@ class TodoHomeScreen extends StatelessWidget {
                 style: TextStyle(
                   color: AppColors.colorBack,
                   fontWeight: FontWeight.bold,
-                  fontSize: AppSizes.fontSizeLgg,
+                  fontSize: AppSizes.fontSizeLgg.sp,
                 ),
               ),
               subtitle: Text(
                 AppStrings.subTitle,
                 style: TextStyle(
                   color: AppColors.textGrey,
-                  fontSize: AppSizes.fontSizeSm,
+                  fontSize: AppSizes.fontSizeSm.sp,
                 ),
               ),
               trailing: Icon(
                 Icons.search,
-                size: AppSizes.iconMd,
+                size: AppSizes.iconMd.sp,
                 color: AppColors.colorBack,
               ),
-              leading: Container(
-                height: AppSizes.imageCircularSize,
-                width: AppSizes.imageCircularSize,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.textWhite,
-                ),
-                alignment: Alignment.center,
+              leading: ClipOval(
                 child: Image.asset(
-                    AppImages.personImage,
+                  AppImages.personImage,
+                  height: AppSizes.imageCircularSize,
+                  width: AppSizes.imageCircularSize,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            Divider(height: 1,),
+            const Divider(
+              height: 1,
+            ),
           ],
         ),
-
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.,
-      floatingActionButton:  CircularButtonWidget(
-        onTap: () {},
+      floatingActionButton: CircularButtonWidget(
+        onTap: () => Get.toNamed(RouteStrings.addTaskScreen),
         iconSize: 20,
       ),
     );

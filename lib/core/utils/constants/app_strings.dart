@@ -15,6 +15,8 @@ class AppStrings {
   static const String firstText = "Daily To-Do App";
   static const String personName = "Zoyeb Ahmed";
   static const String subTitle = "5 incomplete, 5 completed";
+  static const String backText = "Lists";
+  static const String addTask = "Add a Task";
 
   // // Funny Warning Message
   // static const String facebookWarning =

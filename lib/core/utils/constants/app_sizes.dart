@@ -11,9 +11,13 @@ class AppSizes {
   /// Image sizes
   static const double firstImage = 130.0;
 
+  /// Container height
+  static const double conXs = 48.0;
+
   /// Icon sizes
   static const double iconXs = 12.0;
   static const double iconSm = 16.0;
+  static const double iconSmm = 18.0;
   static const double iconMd = 24.0;
   static const double iconLg = 32.0;
 
@@ -37,7 +41,7 @@ class AppSizes {
   static const double buttonElevation = 4.0;
 
   /// image sizes
-  static const double imageCircularSize = 50.0;
+  static const double imageCircularSize = 56.0;
 
   /// Border radius
   static const double borderRadiusSm = 4.0;
