@@ -3,27 +3,27 @@ import 'package:sensors_plus/sensors_plus.dart';
 
 class SensorTrackingController extends GetxController{
 
-  List<double> gyroDataX = [];
-  List<double>  gyroDataY = [];
-  List<double>  gyroDataZ = [];
-  List<double>  accelDataX = [];
-  List<double>  accelDataY = [];
-  List<double>  accelDataZ = [];
+  var gyroDataX = <double>[].obs;
+  var gyroDataY = <double>[].obs;
+  var gyroDataZ = <double>[].obs;
+  var accelDataX = <double>[].obs;
+  var accelDataY = <double>[].obs;
+  var accelDataZ = <double>[].obs;
 
   GyroscopeEvent? gyroEvent;
   AccelerometerEvent? accelEvent;
-  bool alertTriggered = false;
+  var alertTriggered = false.obs;
 
   @override
   void onInit() {
-    super.onInit();
     // Gyroscope listener
     gyroscopeEvents.listen((GyroscopeEvent event) {
         gyroEvent = event;
         gyroDataX.add(event.x);
         gyroDataY.add(event.y);
         gyroDataZ.add(event.z);
-        checkForAlert();
+        _checkForAlert();
+        update();
     });
 
     // Accelerometer listener
@@ -32,17 +32,19 @@ class SensorTrackingController extends GetxController{
         accelDataX.add(event.x);
         accelDataY.add(event.y);
         accelDataZ.add(event.z);
-        checkForAlert();
+        _checkForAlert();
+        update();
     });
+    super.onInit();
 
   }
 
-  void checkForAlert() {
+  void _checkForAlert() {
     if ((gyroEvent != null && gyroEvent!.x.abs() > 5 && gyroEvent!.y.abs() > 5) ||
         (accelEvent != null && accelEvent!.x.abs() > 5 && accelEvent!.y.abs() > 5)) {
-      alertTriggered = true;
+      alertTriggered.value = true;
     } else {
-      alertTriggered = false;
+      alertTriggered.value = false;
     }
   }
 

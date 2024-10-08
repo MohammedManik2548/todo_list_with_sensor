@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'database/database.dart';
-import 'models/todo_model.dart';
+import '../../core/utils/local_storage/database.dart';
+import '../../models/todo_model.dart';
 
 class TodoListScreen extends StatefulWidget {
   @override
