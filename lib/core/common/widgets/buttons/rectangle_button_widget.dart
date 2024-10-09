@@ -9,6 +9,8 @@ class RectangleButtonWidget extends StatelessWidget {
   final String title;
   final Color color;
   final Color textColor;
+  final double? fontSize;
+  final double? radius;
   final Function()? onTap;
 
   const RectangleButtonWidget({
@@ -17,6 +19,8 @@ class RectangleButtonWidget extends StatelessWidget {
     required this.color,
     this.height = 76,
     this.width = 328,
+    this.fontSize=24,
+    this.radius=16,
     required this.title,
     required this.textColor,
   });
@@ -29,7 +33,7 @@ class RectangleButtonWidget extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(radius!),
           color: color,
         ),
         alignment: Alignment.center,
@@ -37,7 +41,7 @@ class RectangleButtonWidget extends StatelessWidget {
         child: Text(
             title,
           style: TextStyle(
-            fontSize: 24.sp,
+            fontSize: fontSize?.sp,
             color: textColor,
           ),
         ),

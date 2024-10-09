@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_list/presentation/entry_screen/entry_screen.dart';
 import 'package:todo_list/routes/app_routes.dart';
+import 'package:todo_list/routes/routes.dart';
 import 'bindings/general_bindings.dart';
 import 'core/utils/theme/app_theme.dart';
 import 'core/utils/local_storage/database.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           getPages: AppRoutes.pages,
           initialBinding: GeneralBindings(),
-          home: EntryScreen(),
+          initialRoute: RouteStrings.entryScreen,
         );
       },
     );

@@ -5,6 +5,10 @@ class AppImages {
   // -- todo
   static const String todoImage = "assets/images/todo_first.png";
   static const String personImage = "assets/images/person.jpeg";
+  static const String notificationImage = "assets/images/Reminder.svg";
+  static const String fileImage = "assets/images/file.svg";
+  static const String calenderImage = "assets/images/calender.svg";
+  static const String calender2Image = "assets/images/calender2.svg";
 
   // -- Social Icons
   static const String facebook = "assets/icons/facebook.svg";
@@ -27,6 +31,7 @@ class AppImages {
   static const String rating = "assets/icons/rating.svg";
   static const String search = "assets/icons/search.svg";
   static const String wishlist = "assets/icons/wishlist.svg";
+
 
   // Profile
   static const String profileRing = "assets/images/profile_ring.svg";
