@@ -9,6 +9,7 @@ class AppImages {
   static const String fileImage = "assets/images/file.svg";
   static const String calenderImage = "assets/images/calender.svg";
   static const String calender2Image = "assets/images/calender2.svg";
+  static const String layerImage = "assets/images/layer.svg";
 
   // -- Social Icons
   static const String facebook = "assets/icons/facebook.svg";

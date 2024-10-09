@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:todo_list/core/common/widgets/buttons/rectangle_button_widget.dart';
 import 'package:todo_list/core/utils/date_formater/date_formater.dart';
 import '../../core/common/widgets/buttons/circular_button_widget.dart';
 import '../../core/utils/constants/app_colors.dart';
 import '../../core/utils/constants/app_images.dart';
 import '../../core/utils/constants/app_sizes.dart';
 import '../../core/utils/constants/app_strings.dart';
+import '../../models/todo_model.dart';
 import '../../routes/routes.dart';
 import 'add_todo_controller.dart';
 
@@ -34,11 +36,27 @@ class AddTaskScreen extends StatelessWidget {
             fontSize: AppSizes.iconSm.sp,
           ),
         ),
+        actions: [
+          Obx(()=>Visibility(
+            visible: _controller.isAddTask.value,
+            child: RectangleButtonWidget(
+              onTap: ()=> _controller.addDone(),
+              width: 50.w,
+              height: 35.h,
+              fontSize: 12,
+              radius: 5,
+              color: AppColors.primary,
+              title: 'Done',
+              textColor: AppColors.textWhite,
+            ),
+          ),),
+          SizedBox(width: 18.w)
+        ],
       ),
       body: Container(
         margin: EdgeInsets.only(left: 18.w, right: 18.w),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               margin: EdgeInsets.only(left: 12.w, right: 12.w),
@@ -67,6 +85,46 @@ class AddTaskScreen extends StatelessWidget {
             ),
             Obx(
               () => Visibility(
+                visible: _controller.isAddTask.value,
+                child: Container(
+                  margin: EdgeInsets.only(left: 10.w),
+                  color: AppColors.textWhite,
+                  alignment: Alignment.centerLeft,
+                  child: ListTile(
+                    horizontalTitleGap: 0,
+                    title: Text(_controller.addTaskTextController.value.text),
+                    subtitle: Text(
+                      DateFormater.dateFormatHyphen(_controller.dateString.value),
+                      style: const TextStyle(
+                        color: AppColors.dividerGray,
+                        fontSize: 12,
+                      ),
+                    ),
+                    leading: Checkbox(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5),
+                          ),
+                        ),
+                        side: const BorderSide(
+                          width: 2,
+                          color: AppColors.dividerGray,
+                        ),
+                        value: false,
+                        onChanged: (v) {}),
+                    trailing: SvgPicture.asset(
+                      AppImages.layerImage,
+                      height: AppSizes.iconMd,
+                      width: AppSizes.iconMd,
+                      fit: BoxFit.none,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const Spacer(),
+            Obx(
+              () => Visibility(
                 visible: _controller.addUntitled.value,
                 child: GestureDetector(
                   onTap: () async {
@@ -90,56 +148,61 @@ class AddTaskScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             ListTile(
-                              horizontalTitleGap: 0,
-                              title: TextFormField(
-                                cursorColor: AppColors.colorBack,
-                                controller:
-                                    _controller.addTaskTextController.value,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Add a Task',
-                                  hintStyle: TextStyle(
-                                    color: AppColors.dividerGray,
-                                  ),
-                                ),
-                                onChanged:(v){
-                                  if(v !=''){
-                                    _controller.circleCheckBox.value = true;
-                                  }else if(v == ''){
-                                    _controller.circleCheckBox.value = false;
-                                  }
-                                },
-                                onEditingComplete: () {
-                                  _controller.addUntitled.value = true;
-                                },
-                              ),
-                              leading: Checkbox(
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          5), // Apply radius to the top-left, // Apply radius to the top-right
+                                horizontalTitleGap: 0,
+                                title: TextFormField(
+                                  cursorColor: AppColors.colorBack,
+                                  controller:
+                                      _controller.addTaskTextController.value,
+                                  decoration: const InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'Add a Task',
+                                    hintStyle: TextStyle(
+                                      color: AppColors.dividerGray,
                                     ),
                                   ),
-                                  side: const BorderSide(
-                                    width: 2,
-                                    color: AppColors.dividerGray,
-                                  ),
-                                  value: false,
-                                  onChanged: (v) {}),
-                              trailing: Obx(() => Checkbox(
-                                  shape: const CircleBorder(),
-                                  side: const BorderSide(
-                                      width: 2, color: AppColors.dividerGray),
-                                  activeColor: _controller.circleCheckBox.value == true
-                                      ? AppColors.primary
-                                      : AppColors.dividerGray,
-                                  checkColor: AppColors.textWhite,
-                                  value: _controller.circleCheckBox.value,
                                   onChanged: (v) {
-                                      _controller.circleCheckBox.value = v!;
-
-                                  }),)
-                            ),
+                                    if (v != '') {
+                                      _controller.circleCheckBox.value = true;
+                                    } else if (v == '') {
+                                      _controller.circleCheckBox.value = false;
+                                    }
+                                  },
+                                  onEditingComplete: () {
+                                    _controller.addUntitled.value = true;
+                                    _controller.isAddTask.value = true;
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                leading: Checkbox(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            5), // Apply radius to the top-left, // Apply radius to the top-right
+                                      ),
+                                    ),
+                                    side: const BorderSide(
+                                      width: 2,
+                                      color: AppColors.dividerGray,
+                                    ),
+                                    value: false,
+                                    onChanged: (v) {}),
+                                trailing: Obx(
+                                  () => Checkbox(
+                                      shape: const CircleBorder(),
+                                      side: const BorderSide(
+                                          width: 2,
+                                          color: AppColors.dividerGray),
+                                      activeColor:
+                                          _controller.circleCheckBox.value ==
+                                                  true
+                                              ? AppColors.primary
+                                              : AppColors.dividerGray,
+                                      checkColor: AppColors.textWhite,
+                                      value: _controller.circleCheckBox.value,
+                                      onChanged: (v) {
+                                        _controller.circleCheckBox.value = v!;
+                                      }),
+                                )),
                             SizedBox(height: 20.h),
                             Padding(
                               padding:
@@ -164,34 +227,33 @@ class AddTaskScreen extends StatelessWidget {
                                     onTap: () {
                                       Get.toNamed(RouteStrings.calenderScreen);
                                     },
-                                    child:
-                                        _controller.selectedDate.value == null
-                                            ? SvgPicture.asset(
-                                                AppImages.calenderImage,
-                                                height: AppSizes.iconSm,
-                                                width: AppSizes.iconSm,
-                                                fit: BoxFit.none,
-                                              )
-                                            : SvgPicture.asset(
-                                                AppImages.calender2Image,
-                                                height: AppSizes.iconSm,
-                                                width: AppSizes.iconSm,
-                                                fit: BoxFit.none,
-                                              ),
+                                    child: _controller.dateString.value == ''
+                                        ? SvgPicture.asset(
+                                            AppImages.calenderImage,
+                                            height: AppSizes.iconSm,
+                                            width: AppSizes.iconSm,
+                                            fit: BoxFit.none,
+                                          )
+                                        : SvgPicture.asset(
+                                            AppImages.calender2Image,
+                                            height: AppSizes.iconSm,
+                                            width: AppSizes.iconSm,
+                                            fit: BoxFit.none,
+                                          ),
                                   ),
                                   SizedBox(width: 10.w),
-                                  _controller.selectedDate.value != null
+                                  _controller.dateString.value != ''
                                       ? Obx(
                                           () => Text(
                                             DateFormater.dateFormatHyphen(
-                                              '${_controller.selectedDate.value}',
+                                              _controller.dateString.value,
                                             ),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: AppColors.primary,
                                             ),
                                           ),
                                         )
-                                      : SizedBox.shrink(),
+                                      : const SizedBox.shrink(),
                                 ],
                               ),
                             ),

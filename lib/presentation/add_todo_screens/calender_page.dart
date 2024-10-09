@@ -34,7 +34,7 @@ class CalendarPage extends StatelessWidget {
         margin: EdgeInsets.only(top: 50.h, left: 18.w, right: 18.w),
         padding: EdgeInsets.all(18.w),
         height: 480.h,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: AppColors.textWhite,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(AppSizes.borderRadiusLg),
@@ -71,11 +71,12 @@ class CalendarPage extends StatelessWidget {
                 return isSameDay(_controller.selectedDate.value, day);
               },
               onDaySelected: (selectedDay, focusedDay) {
-                _controller.selectedDate.value =
-                    selectedDay; // Update selected date
+                _controller.selectedDate.value = selectedDay;
+                _controller.dateString.value = selectedDay.toString();
+                print('selected_string: ${_controller.dateString.value}');
               },
               calendarStyle: CalendarStyle(
-                selectedDecoration: BoxDecoration(
+                selectedDecoration: const BoxDecoration(
                   color: AppColors.primary,
                   shape: BoxShape.circle,
                 ),
@@ -110,7 +111,7 @@ class CalendarPage extends StatelessWidget {
                       } else {
                         // Show a warning if no date is selected
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Please select a date')),
+                          const SnackBar(content: Text('Please select a date')),
                         );
                       }
                     },
