@@ -1,7 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_list/presentation/entry_screen/entry_screen.dart';
 import 'package:todo_list/routes/app_routes.dart';
 import 'package:todo_list/routes/routes.dart';
 import 'bindings/general_bindings.dart';
@@ -16,10 +15,12 @@ void main() async {
   await TodoDatabase.instance.database;
   tz.initializeTimeZones();
   // runApp(DevicePreview(builder: (context)=> MyApp()));
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

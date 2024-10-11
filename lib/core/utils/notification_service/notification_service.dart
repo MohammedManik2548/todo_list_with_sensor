@@ -47,7 +47,7 @@ class NotifyHelper{
       platformChannelSpecifics,
     );
   }
-  static Future<void> scheduledNotification(String title, String body, DateTime selectedTime)async{
+  static Future<void> scheduledNotification(String title, String body, String selectedTime)async{
 
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
         android: AndroidNotificationDetails(
@@ -61,11 +61,13 @@ class NotifyHelper{
       0,
       title,
       body,
-      tz.TZDateTime.from(selectedTime, tz.local),
+      tz.TZDateTime.from(DateTime.parse(selectedTime), tz.local),
       platformChannelSpecifics,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dateAndTime,
+
     );
+    print('fffffffffff: ${DateTime.parse(selectedTime)}');
   }
 
 

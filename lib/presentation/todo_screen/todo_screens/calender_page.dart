@@ -4,21 +4,8 @@ import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_list/core/common/widgets/buttons/rectangle_button_widget.dart';
 import 'package:todo_list/core/utils/constants/app_sizes.dart';
-
-import '../../core/utils/constants/app_colors.dart';
-import 'todo_controller/todo_controller.dart';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart';
-
-import 'todo_controller/todo_controller.dart';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart';
-
-import 'todo_controller/todo_controller.dart';
+import '../../../core/utils/constants/app_colors.dart';
+import '../todo_controller/todo_controller.dart';
 
 class CalendarPage extends StatelessWidget {
   final _controller = Get.put(AddTodoController());

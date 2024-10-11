@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import '../../../core/common/models/todo_model.dart';
 import '../../../core/utils/date_formater/date_formater.dart';
 import '../../../core/utils/local_storage/database.dart';
 import '../../../core/utils/notification_service/notification_service.dart';
-import '../../../models/todo_model.dart';
 import '../../../routes/routes.dart';
 
 class AddTodoController extends GetxController{
@@ -28,32 +29,35 @@ class AddTodoController extends GetxController{
   void onInit() async{
     _loadTodos();
     await NotifyHelper.init();
-    tz.initializeTimeZones();
-    DateTime selectedTime = DateTime.now().add(const Duration(minutes: 5));
-    NotifyHelper.scheduledNotification(
-      'Schedule Notification',
-      'This is Schedule Notification',
-      selectedTime,
-    );
     super.onInit();
   }
 
   void selectDate(DateTime date) {
     selectedDate.value = date; // Update selected date
   }
-  void addDone(){
+  Future<void> addDone() async {
     final todo = Todo(
       title: titleTextController.value.text,
       details: addTaskTextController.value.text,
-      dueDate: DateFormater.dateFormatHyphen(dateString.value),
+      dueDate: DateFormater.dateFormat(dateString.value),
     );
     addTodo(todo);
     _clearData();
     Get.toNamed(RouteStrings.todoHomeScreen);
-    NotifyHelper.showInstantNotification(
-      'Your task is Added',
-      'Your can take another task again',
+    // NotifyHelper.showInstantNotification(
+    //   todo.title,
+    //   'Your ${todo.details} added'
+    // );
+
+    tz.initializeTimeZones();
+    DateTime selectedTime = DateTime.now().add(const Duration(minutes: 1));
+    print('ffffff: $selectedTime');
+    NotifyHelper.scheduledNotification(
+      'Schedule Notification Reminder',
+      'Please Complete Your ${todo.title}',
+      todo.dueDate,
     );
+    print('notification ${todo.dueDate}');
   }
   _clearData(){
     isAddTask.value=false;

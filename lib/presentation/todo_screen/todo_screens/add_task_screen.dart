@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_list/core/common/widgets/buttons/rectangle_button_widget.dart';
 import 'package:todo_list/core/utils/date_formater/date_formater.dart';
-import 'package:todo_list/presentation/add_todo_screens/todo_details_screen.dart';
-import '../../core/common/widgets/buttons/circular_button_widget.dart';
-import '../../core/utils/constants/app_colors.dart';
-import '../../core/utils/constants/app_images.dart';
-import '../../core/utils/constants/app_sizes.dart';
-import '../../core/utils/constants/app_strings.dart';
-import '../../models/todo_model.dart';
-import '../../routes/routes.dart';
-import 'todo_controller/todo_controller.dart';
+import 'package:todo_list/presentation/todo_screen/todo_screens/todo_details_screen.dart';
+import '../../../core/common/models/todo_model.dart';
+import '../../../core/common/widgets/buttons/circular_button_widget.dart';
+import '../../../core/utils/constants/app_colors.dart';
+import '../../../core/utils/constants/app_images.dart';
+import '../../../core/utils/constants/app_sizes.dart';
+import '../../../core/utils/constants/app_strings.dart';
+import '../../../routes/routes.dart';
+import '../todo_controller/todo_controller.dart';
 
 class AddTaskScreen extends StatelessWidget {
   Todo? todo;
@@ -28,10 +27,10 @@ class AddTaskScreen extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         titleSpacing: 0.0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 18.0),
+          padding: EdgeInsets.only(left: 18.0.w),
           child: IconButton(
             onPressed: () {
-              _controller.isDataPass.value=false;
+              _controller.isDataPass.value = false;
               _controller.addUntitled.value = false;
               Get.back();
             },
@@ -77,7 +76,7 @@ class AddTaskScreen extends StatelessWidget {
               child: todo?.title != null
                   ? Text(
                       todo!.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.colorBack,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

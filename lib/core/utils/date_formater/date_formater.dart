@@ -1,19 +1,28 @@
 import 'package:intl/intl.dart';
 
 class DateFormater {
-  static DateTime stringToDate(String dateString){
-
-    // Adding the current year or a default year to the string
-    String formattedString = '$dateString 2024';
+  static DateTime stringToDate(String dateString) {
+    // Adding the current year to the string
 
     // Define the format of the input string
-    DateFormat format = DateFormat('EEE, d MMM yyyy');
+    DateFormat format = DateFormat('EEE, d MMM');
 
-    DateTime parsedDate = format.parse(formattedString);
+    DateTime parsedDate = format.parse(dateString);
 
-    print(parsedDate);
+    print('String to convert Date: $parsedDate');
     return parsedDate;
   }
+
+  static String dateFormat(String substring) {
+    print('before: $substring');
+    var inputFormat = DateFormat('yyyy-MM-dd');
+    var inputDate = inputFormat.parse(substring);
+    var outputFormat = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
+    var outputDate = outputFormat.format(inputDate);
+    print('after: $outputDate');
+    return outputDate;
+  }
+
   static String dateFormatHyphen(String substring) {
     var finalDateToFormat = "";
     try {
@@ -27,13 +36,15 @@ class DateFormater {
       } else {
         //dynamic updated
         // finalDateToFormat = DateFormat.yMMMd().format(DateTime.parse(substring));
-        finalDateToFormat =
-            DateFormat('EEE, dd MMM').format(DateTime.parse(substring));
+        finalDateToFormat = DateFormat('EEE, dd MMM').format(DateTime.parse(substring));
       }
 
+      print('format to convert Date: $finalDateToFormat');
       return finalDateToFormat;
     } catch (e) {
       return substring;
     }
   }
+
+
 }

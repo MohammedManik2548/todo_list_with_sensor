@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:todo_list/core/common/widgets/buttons/rectangle_button_widget.dart';
-import 'package:todo_list/models/todo_model.dart';
-import '../../core/common/widgets/buttons/circular_button_widget.dart';
-import '../../core/utils/constants/app_colors.dart';
-import '../../core/utils/constants/app_images.dart';
-import '../../core/utils/constants/app_sizes.dart';
-import '../../core/utils/constants/app_strings.dart';
-import '../../core/utils/notification_service/notification_service.dart';
-import '../../routes/routes.dart';
+import '../../../core/common/models/todo_model.dart';
+import '../../../core/common/widgets/buttons/circular_button_widget.dart';
+import '../../../core/utils/constants/app_colors.dart';
+import '../../../core/utils/constants/app_images.dart';
+import '../../../core/utils/constants/app_sizes.dart';
+import '../../../core/utils/constants/app_strings.dart';
+import '../../../routes/routes.dart';
+import '../todo_controller/todo_controller.dart';
 import 'add_task_screen.dart';
-import 'todo_controller/todo_controller.dart';
 
 class TodoHomeScreen extends StatelessWidget {
   TodoHomeScreen({super.key});

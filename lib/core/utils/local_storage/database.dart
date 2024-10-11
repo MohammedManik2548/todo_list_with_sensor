@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import '../../../models/todo_model.dart';
+import '../../common/models/todo_model.dart';
 
 class TodoDatabase {
   static final TodoDatabase instance = TodoDatabase._init();
