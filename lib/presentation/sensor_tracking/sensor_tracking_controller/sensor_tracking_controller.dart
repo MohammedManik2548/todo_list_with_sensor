@@ -22,8 +22,8 @@ class SensorTrackingController extends GetxController{
         gyroDataX.add(event.x);
         gyroDataY.add(event.y);
         gyroDataZ.add(event.z);
-        _checkForAlert();
         update();
+        _checkForAlert();
     });
 
     // Accelerometer listener
@@ -32,8 +32,8 @@ class SensorTrackingController extends GetxController{
         accelDataX.add(event.x);
         accelDataY.add(event.y);
         accelDataZ.add(event.z);
-        _checkForAlert();
         update();
+        _checkForAlert();
     });
     super.onInit();
 

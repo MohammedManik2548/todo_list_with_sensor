@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_list/core/common/widgets/buttons/rectangle_button_widget.dart';
 import 'package:todo_list/core/utils/date_formater/date_formater.dart';
+import 'package:todo_list/presentation/add_todo_screens/todo_details_screen.dart';
 import '../../core/common/widgets/buttons/circular_button_widget.dart';
 import '../../core/utils/constants/app_colors.dart';
 import '../../core/utils/constants/app_images.dart';
@@ -12,10 +13,11 @@ import '../../core/utils/constants/app_sizes.dart';
 import '../../core/utils/constants/app_strings.dart';
 import '../../models/todo_model.dart';
 import '../../routes/routes.dart';
-import 'add_todo_controller.dart';
+import 'todo_controller/todo_controller.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  AddTaskScreen({super.key});
+  Todo? todo;
+  AddTaskScreen({super.key, this.todo});
   final _controller = Get.put(AddTodoController());
 
   @override
@@ -25,9 +27,18 @@ class AddTaskScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         titleSpacing: 0.0,
-        leading: const Padding(
+        leading: Padding(
           padding: EdgeInsets.only(left: 18.0),
-          child: Icon(Icons.arrow_back_outlined),
+          child: IconButton(
+            onPressed: () {
+              _controller.isDataPass.value=false;
+              _controller.addUntitled.value = false;
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_outlined,
+            ),
+          ),
         ),
         title: Text(
           AppStrings.backText,
@@ -37,19 +48,21 @@ class AddTaskScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          Obx(()=>Visibility(
-            visible: _controller.isAddTask.value,
-            child: RectangleButtonWidget(
-              onTap: ()=> _controller.addDone(),
-              width: 50.w,
-              height: 35.h,
-              fontSize: 12,
-              radius: 5,
-              color: AppColors.primary,
-              title: 'Done',
-              textColor: AppColors.textWhite,
+          Obx(
+            () => Visibility(
+              visible: _controller.isAddTask.value,
+              child: RectangleButtonWidget(
+                onTap: () => _controller.addDone(),
+                width: 50.w,
+                height: 35.h,
+                fontSize: 12,
+                radius: 5,
+                color: AppColors.primary,
+                title: 'Done',
+                textColor: AppColors.textWhite,
+              ),
             ),
-          ),),
+          ),
           SizedBox(width: 18.w)
         ],
       ),
@@ -57,66 +70,103 @@ class AddTaskScreen extends StatelessWidget {
         margin: EdgeInsets.only(left: 18.w, right: 18.w),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               margin: EdgeInsets.only(left: 12.w, right: 12.w),
-              child: TextFormField(
-                cursorColor: AppColors.colorBack,
-                controller: _controller.titleTextController.value,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Untitled List (0)',
-                  hintStyle: TextStyle(
-                    color: AppColors.dividerGray,
-                  ),
-                ),
-                // onChanged:(v){
-                //   print('check_print: $v');
-                //   if(v !=''){
-                //     _controller.addUntitled.value = true;
-                //   }else if(v == ''){
-                //     _controller.addUntitled.value = false;
-                //   }
-                // },
-                onEditingComplete: () {
-                  _controller.addUntitled.value = true;
-                },
-              ),
+              child: todo?.title != null
+                  ? Text(
+                      todo!.title,
+                      style: TextStyle(
+                        color: AppColors.colorBack,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    )
+                  : TextFormField(
+                      cursorColor: AppColors.colorBack,
+                      controller: _controller.titleTextController.value,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Untitled List (0)',
+                        hintStyle: TextStyle(
+                          color: AppColors.dividerGray,
+                        ),
+                      ),
+                      // onChanged:(v){
+                      //   print('check_print: $v');
+                      //   if(v !=''){
+                      //     _controller.addUntitled.value = true;
+                      //   }else if(v == ''){
+                      //     _controller.addUntitled.value = false;
+                      //   }
+                      // },
+                      onEditingComplete: () {
+                        _controller.addUntitled.value = true;
+                      },
+                    ),
             ),
             Obx(
               () => Visibility(
-                visible: _controller.isAddTask.value,
-                child: Container(
-                  margin: EdgeInsets.only(left: 10.w),
-                  color: AppColors.textWhite,
-                  alignment: Alignment.centerLeft,
-                  child: ListTile(
-                    horizontalTitleGap: 0,
-                    title: Text(_controller.addTaskTextController.value.text),
-                    subtitle: Text(
-                      DateFormater.dateFormatHyphen(_controller.dateString.value),
-                      style: const TextStyle(
-                        color: AppColors.dividerGray,
-                        fontSize: 12,
-                      ),
-                    ),
-                    leading: Checkbox(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
+                visible:
+                    _controller.isAddTask.value || _controller.isDataPass.value,
+                child: InkWell(
+                  onTap: (){
+                    if(_controller.isDataPass.value == true){
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TodoDetailsScreen(
+                            todo: Todo(
+                              id: todo!.id,
+                              title: todo!.title,
+                              details: todo!.details,
+                              dueDate: todo!.dueDate,
+                            ),
+                          )));
+                    }
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10.w),
+                    color: AppColors.textWhite,
+                    alignment: Alignment.centerLeft,
+                    child: ListTile(
+                      horizontalTitleGap: 0,
+                      title: todo?.details != null
+                          ? Text(todo!.details)
+                          : Text(_controller.addTaskTextController.value.text),
+                      subtitle: todo?.dueDate != null
+                          ? Text(
+                              todo!.dueDate,
+                              style: const TextStyle(
+                                color: AppColors.dividerGray,
+                                fontSize: 12,
+                              ),
+                            )
+                          : Text(
+                              DateFormater.dateFormatHyphen(
+                                  _controller.dateString.value),
+                              style: const TextStyle(
+                                color: AppColors.dividerGray,
+                                fontSize: 12,
+                              ),
+                            ),
+                      leading: Checkbox(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5),
+                            ),
                           ),
-                        ),
-                        side: const BorderSide(
-                          width: 2,
-                          color: AppColors.dividerGray,
-                        ),
-                        value: false,
-                        onChanged: (v) {}),
-                    trailing: SvgPicture.asset(
-                      AppImages.layerImage,
-                      height: AppSizes.iconMd,
-                      width: AppSizes.iconMd,
-                      fit: BoxFit.none,
+                          side: const BorderSide(
+                            width: 2,
+                            color: AppColors.dividerGray,
+                          ),
+                          value: false,
+                          onChanged: (v) {}),
+                      trailing: SvgPicture.asset(
+                        AppImages.layerImage,
+                        height: AppSizes.iconMd,
+                        width: AppSizes.iconMd,
+                        fit: BoxFit.none,
+                      ),
                     ),
                   ),
                 ),
@@ -125,7 +175,7 @@ class AddTaskScreen extends StatelessWidget {
             const Spacer(),
             Obx(
               () => Visibility(
-                visible: _controller.addUntitled.value,
+                visible: _controller.addUntitled.value || _controller.isDataPass.value,
                 child: GestureDetector(
                   onTap: () async {
                     await showModalBottomSheet(

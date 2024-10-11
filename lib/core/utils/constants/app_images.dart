@@ -7,9 +7,11 @@ class AppImages {
   static const String personImage = "assets/images/person.jpeg";
   static const String notificationImage = "assets/images/Reminder.svg";
   static const String fileImage = "assets/images/file.svg";
+  static const String listImage = "assets/images/list.svg";
   static const String calenderImage = "assets/images/calender.svg";
   static const String calender2Image = "assets/images/calender2.svg";
   static const String layerImage = "assets/images/layer.svg";
+  static const String deleteImage = "assets/images/delete.svg";
 
   // -- Social Icons
   static const String facebook = "assets/icons/facebook.svg";
