@@ -14,8 +14,7 @@ void main() async {
   // Initialize the database
   await TodoDatabase.instance.database;
   tz.initializeTimeZones();
-  runApp(DevicePreview(builder: (context)=> MyApp()));
-  // runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

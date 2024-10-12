@@ -8,7 +8,7 @@ Welcome to the Todos Flutter Application! This README file provides an overview 
 This app offers a simple and intuitive way to create, manage, and prioritize tasks, ensuring that you stay productive and focused on what matters most. With features like task categorization, due date reminders, and progress tracking, the To-Do app is your perfect companion for boosting productivity and reducing stress.
 ## Download Application
 
-Download Now: [Todos-Android-Application.APK](https://drive.google.com/file/d/1VjrUr8IOg3iio0lQRv7cBLyxgNKfpiec/view?usp=sharing)
+Download Now: [Todos-Android-Application.APK](https://drive.google.com/file/d/1lUHqiFsY-KE5TXRoR0XoNdnlUzQFTu_d/view?usp=sharing)
 
 ## Features
 
@@ -22,7 +22,7 @@ To get started with the Todos Flutter Application, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/MohammedManik2548/todos_task
+   git clone https://github.com/MohammedManik2548/todo_list_with_sensor.git
    ```
 2. **Navigate to the project directory**:
    ```bash
