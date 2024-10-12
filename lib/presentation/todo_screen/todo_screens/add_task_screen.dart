@@ -134,7 +134,7 @@ class AddTaskScreen extends StatelessWidget {
                           : Text(_controller.addTaskTextController.value.text),
                       subtitle: todo?.dueDate != null
                           ? Text(
-                              todo!.dueDate,
+                              DateFormater.dateFormatHyphen(todo!.dueDate),
                               style: const TextStyle(
                                 color: AppColors.dividerGray,
                                 fontSize: 12,

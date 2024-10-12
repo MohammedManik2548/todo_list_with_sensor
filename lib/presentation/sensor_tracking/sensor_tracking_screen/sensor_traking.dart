@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import '../../../core/utils/constants/app_colors.dart';
 import '../../../core/utils/constants/app_strings.dart';
 import '../sensor_tracking_controller/sensor_tracking_controller.dart';
@@ -17,6 +16,7 @@ class SensorTrackingScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
+        title: const Text(AppStrings.graphText),
         leading: Padding(
           padding: EdgeInsets.only(left: 18.0.w),
           child: IconButton(
@@ -52,7 +52,7 @@ class SensorTrackingScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 15,top: 5),
+                            margin: const EdgeInsets.only(left: 15,top: 5),
                             alignment: Alignment.topLeft,
                             child: const Text(
                               AppStrings.gyroText,
@@ -76,7 +76,7 @@ class SensorTrackingScreen extends StatelessWidget {
                                         textStyle: TextStyle(color:  AppColors.colorBack, fontSize: 10.sp, fontWeight: FontWeight.bold)
                                     ),
                                     axisLine: AxisLine(width: 1, color: AppColors.colorBack),
-                                    maximum: 500,
+                                    // maximum: 500,
                                     interval: 50,
                                     labelFormat: '{value}',
                                   ),
@@ -254,7 +254,7 @@ class SensorTrackingScreen extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Color(0xFFEAEAEA)),
+                        border: Border.all(color: const Color(0xFFEAEAEA)),
                       ),
                       child: Column(
                         children: [
@@ -269,25 +269,25 @@ class SensorTrackingScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Divider(color: AppColors.customGray),
+                          const Divider(color: AppColors.customGray),
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: NumericAxis(
-                                minimum: 0,
-                                maximum: 1900,
+                              primaryXAxis: const NumericAxis(
+                                // minimum: 0,
+                                // maximum: 1900,
                                 interval: 250,
                                 majorGridLines: MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
-                                    start: 400, // Start of the zone
-                                    end: 1400,   // End of the zone
-                                    color: AppColors.customPink, // Color of the zone with transparency
+                                    start: 400,
+                                    end: 1400,
+                                    color: AppColors.customPink,
                                   ),
                                 ],
                               ),
-                              primaryYAxis: NumericAxis(
+                              primaryYAxis: const NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,
@@ -307,21 +307,21 @@ class SensorTrackingScreen extends StatelessWidget {
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: NumericAxis(
-                                minimum: 0,
-                                maximum: 1900,
+                              primaryXAxis: const NumericAxis(
+                                // minimum: 0,
+                                // maximum: 1900,
                                 interval: 250,
                                 majorGridLines: MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
-                                    start: 400, // Start of the zone
-                                    end: 1400,   // End of the zone
-                                    color: AppColors.opacityGreen, // Color of the zone with transparency
+                                    start: 400,
+                                    end: 1400,
+                                    color: AppColors.opacityGreen,
                                   ),
                                 ],
                               ),
-                              primaryYAxis: NumericAxis(
+                              primaryYAxis: const NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,
@@ -341,21 +341,21 @@ class SensorTrackingScreen extends StatelessWidget {
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: NumericAxis(
-                                minimum: 0,
-                                maximum: 1900,
+                              primaryXAxis: const NumericAxis(
+                                // minimum: 0,
+                                // maximum: 1900,
                                 interval: 250,
                                 majorGridLines: MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
-                                    start: 400, // Start of the zone
-                                    end: 1400,   // End of the zone
-                                    color: AppColors.customLavender, // Color of the zone with transparency
+                                    start: 400,
+                                    end: 1400,
+                                    color: AppColors.customLavender,
                                   ),
                                 ],
                               ),
-                              primaryYAxis: NumericAxis(
+                              primaryYAxis: const NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,

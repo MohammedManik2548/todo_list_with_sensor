@@ -17,15 +17,7 @@ class AppStrings {
   static const String subTitle = "5 incomplete, 5 completed";
   static const String backText = "Lists";
   static const String addTask = "Add a Task";
+  static const String graphText = "gyro and accelerometer sensors";
 
-  // // Funny Warning Message
-  // static const String facebookWarning =
-  //     "Our Facebook login button is on a break! 🌴😅 Please use other login/register options for now.";
-  // static const String googleWarning =
-  //     "Our Google login button is off on an adventure. 🕵️‍♂️ Try another login/register method for now!";
-  // static const String imageChooseWaring =
-  //     'Our image choose button is still in art school, learning to pick the best pics! 🎨📸 Check back soon!';
-  //
-  // static const String forgetPasswordWaring =
-  //     'Our "Forget Password" button is having a memory lapse too! 😅🔑 Check back soon!';
+
 }

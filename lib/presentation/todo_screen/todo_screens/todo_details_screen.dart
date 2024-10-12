@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:todo_list/core/utils/date_formater/date_formater.dart';
 import '../../../core/common/models/todo_model.dart';
 import '../../../core/utils/constants/app_colors.dart';
 import '../../../core/utils/constants/app_images.dart';
@@ -23,12 +24,12 @@ class TodoDetailsScreen extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         titleSpacing: 0.0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 18.0),
+          padding: const EdgeInsets.only(left: 18.0),
           child: IconButton(
             onPressed: (){
               Get.back();
             },
-            icon: Icon(Icons.arrow_back_outlined,),
+            icon: const Icon(Icons.arrow_back_outlined,),
           ),
         ),
         title: Text(
@@ -73,7 +74,7 @@ class TodoDetailsScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 10.w),
                 Text(
-                  todo?.dueDate??'',
+                  DateFormater.dateFormatHyphen(todo?.dueDate??''),
                   style: const TextStyle(
                     color: AppColors.primary,
                     fontSize: AppSizes.fontSizeMd,
@@ -155,13 +156,17 @@ class TodoDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 26.h),
-                        Container(
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'Cancel',
-                            style: TextStyle(
-                              color: AppColors.primary,
-                              fontSize: AppSizes.fontSizeLg,
+                        InkWell(
+                          onTap: ()=> Get.back(),
+                          child: Container(
+                            padding: EdgeInsets.only(bottom: 10.w),
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(
+                                color: AppColors.primary,
+                                fontSize: AppSizes.fontSizeLg,
+                              ),
                             ),
                           ),
                         ),
