@@ -44,14 +44,14 @@ class AddTodoController extends GetxController{
     addTodo(todo);
     _clearData();
     Get.toNamed(RouteStrings.todoHomeScreen);
-    // NotifyHelper.showInstantNotification(
-    //   todo.title,
-    //   'Your ${todo.details} added'
-    // );
+    NotifyHelper.showInstantNotification(
+      todo.title,
+      'Your ${todo.details} added'
+    );
 
     tz.initializeTimeZones();
-    DateTime selectedTime = DateTime.now().add(const Duration(minutes: 1));
-    print('ffffff: $selectedTime');
+    // DateTime selectedTime = DateTime.now().add(const Duration(minutes: 1));
+    // print('ffffff: $selectedTime');
     NotifyHelper.scheduledNotification(
       'Schedule Notification Reminder',
       'Please Complete Your ${todo.title}',

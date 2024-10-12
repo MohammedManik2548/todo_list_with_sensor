@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:todo_list/core/utils/date_formater/date_formater.dart';
 import '../../../core/common/models/todo_model.dart';
+import '../../../core/common/widgets/buttons/custom_row_widget.dart';
 import '../../../core/utils/constants/app_colors.dart';
 import '../../../core/utils/constants/app_images.dart';
 import '../../../core/utils/constants/app_sizes.dart';
@@ -45,61 +46,22 @@ class TodoDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  AppImages.notificationImage,
-                  height: AppSizes.iconMd,
-                  width: AppSizes.iconMd,
-                  fit: BoxFit.none,
-                ),
-                SizedBox(width: 10.w),
-                const Text(
-                  'Remind Me',
-                  style: TextStyle(
-                    color: AppColors.dividerGray,
-                    fontSize: AppSizes.fontSizeMd,
-                  ),
-                ),
-              ],
+            const CustomRowWidget(
+              image: AppImages.notificationImage,
+              text: 'Remind Me',
+              color: AppColors.dividerGray,
             ),
             SizedBox(height: 22.h),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  AppImages.calender2Image,
-                  height: AppSizes.iconMd,
-                  width: AppSizes.iconMd,
-                  fit: BoxFit.none,
-                ),
-                SizedBox(width: 10.w),
-                Text(
-                  DateFormater.dateFormatHyphen(todo?.dueDate??''),
-                  style: const TextStyle(
-                    color: AppColors.primary,
-                    fontSize: AppSizes.fontSizeMd,
-                  ),
-                ),
-              ],
+            CustomRowWidget(
+              image: AppImages.calender2Image,
+              text: DateFormater.dateFormatHyphen(todo?.dueDate??''),
+              color: AppColors.primary,
             ),
             SizedBox(height: 22.h),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  AppImages.fileImage,
-                  height: AppSizes.iconMd,
-                  width: AppSizes.iconMd,
-                  fit: BoxFit.none,
-                ),
-                SizedBox(width: 10.w),
-                const Text(
-                  'Add Note',
-                  style: TextStyle(
-                    color: AppColors.dividerGray,
-                    fontSize: AppSizes.fontSizeMd,
-                  ),
-                ),
-              ],
+            const CustomRowWidget(
+              image: AppImages.notificationImage,
+              text: 'Add Note',
+              color: AppColors.dividerGray,
             ),
             const Spacer(),
             GestureDetector(
