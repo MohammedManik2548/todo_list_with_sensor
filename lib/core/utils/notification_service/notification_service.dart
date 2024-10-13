@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/timezone.dart' as tz;
 class NotifyHelper{
   // initialize the FlutterLocalNotificationPlugin instance
@@ -25,11 +26,19 @@ class NotifyHelper{
       onDidReceiveNotificationResponse: onDidReceiveNotification,
       onDidReceiveBackgroundNotificationResponse: onDidReceiveNotification,
     );
+    // add request for android 13+
+    _permissionRequest();
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
         ?.requestNotificationsPermission();
   }
+  static Future<void> _permissionRequest()async{
+    if(await Permission.notification.isDenied){
+      await Permission.notification.request();
+    }
+  }
+
   static Future<void> showInstantNotification(String title, String body)async{
 
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
@@ -53,7 +62,7 @@ class NotifyHelper{
         android: AndroidNotificationDetails(
             "channel_Id",
             "channel_name",
-            importance: Importance.high,
+            importance: Importance.max,
             priority: Priority.high),
         iOS: DarwinNotificationDetails()
     );
@@ -65,6 +74,7 @@ class NotifyHelper{
       platformChannelSpecifics,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dateAndTime,
+      androidAllowWhileIdle: true,
 
     );
     print('fffffffffff: ${DateTime.parse(selectedTime)}');

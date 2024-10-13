@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:todo_list/routes/app_routes.dart';
 import 'package:todo_list/routes/routes.dart';
 import 'bindings/general_bindings.dart';
+import 'core/utils/notification_service/notification_service.dart';
 import 'core/utils/theme/app_theme.dart';
 import 'core/utils/local_storage/database.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
