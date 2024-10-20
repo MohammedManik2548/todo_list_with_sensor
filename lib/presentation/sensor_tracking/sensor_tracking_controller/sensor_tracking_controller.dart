@@ -14,10 +14,16 @@ class SensorTrackingController extends GetxController{
   AccelerometerEvent? accelEvent;
   var alertTriggered = false.obs;
 
+
+  var accelerationThreshold = 12.0.obs; // Adjust based on experimentation
+  var steps = 0.obs;
+
+
+
   @override
   void onInit() {
     // Gyroscope listener
-    gyroscopeEvents.listen((GyroscopeEvent event) {
+    gyroscopeEventStream().listen((GyroscopeEvent event) {
         gyroEvent = event;
         gyroDataX.add(event.x);
         gyroDataY.add(event.y);
@@ -27,16 +33,28 @@ class SensorTrackingController extends GetxController{
     });
 
     // Accelerometer listener
-    accelerometerEvents.listen((AccelerometerEvent event) {
-        accelEvent = event;
-        accelDataX.add(event.x);
-        accelDataY.add(event.y);
-        accelDataZ.add(event.z);
-        update();
-        _checkForAlert();
-    });
+    _trackUserMovement();
+    // accelerometerEventStream().listen((AccelerometerEvent event) {
+    //     accelEvent = event;
+    //     accelDataX.add(event.x);
+    //     accelDataY.add(event.y);
+    //     accelDataZ.add(event.z);
+    //     update();
+    //     _checkForAlert();
+    // });
     super.onInit();
 
+  }
+
+  void _trackUserMovement() {
+    accelerometerEventStream().listen((AccelerometerEvent event) {
+      double acceleration = (event.x * event.x) + (event.y * event.y) + (event.z * event.z);
+
+      if (acceleration > accelerationThreshold.value) {
+        steps.value++;
+        update();
+      }
+    });
   }
 
   void _checkForAlert() {

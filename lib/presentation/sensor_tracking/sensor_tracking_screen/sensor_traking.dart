@@ -47,7 +47,7 @@ class SensorTrackingScreen extends StatelessWidget {
                       // padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Color(0xFFEAEAEA)),
+                        border: Border.all(color: const Color(0xFFEAEAEA)),
                       ),
                       child: Column(
                         children: [
@@ -75,7 +75,7 @@ class SensorTrackingScreen extends StatelessWidget {
                                         text: AppStrings.simplesText,
                                         textStyle: TextStyle(color:  AppColors.colorBack, fontSize: 10.sp, fontWeight: FontWeight.bold)
                                     ),
-                                    axisLine: AxisLine(width: 1, color: AppColors.colorBack),
+                                    axisLine: const AxisLine(width: 1, color: AppColors.colorBack),
                                     // maximum: 500,
                                     interval: 50,
                                     labelFormat: '{value}',
@@ -273,11 +273,11 @@ class SensorTrackingScreen extends StatelessWidget {
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: const NumericAxis(
+                              primaryXAxis:  NumericAxis(
                                 // minimum: 0,
                                 // maximum: 1900,
                                 interval: 250,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
@@ -287,11 +287,11 @@ class SensorTrackingScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              primaryYAxis: const NumericAxis(
+                              primaryYAxis: NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                               ),
                               series: <CartesianSeries>[
                                 LineSeries<double, int>(
@@ -307,11 +307,11 @@ class SensorTrackingScreen extends StatelessWidget {
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: const NumericAxis(
+                              primaryXAxis: NumericAxis(
                                 // minimum: 0,
                                 // maximum: 1900,
                                 interval: 250,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
@@ -321,11 +321,11 @@ class SensorTrackingScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              primaryYAxis: const NumericAxis(
+                              primaryYAxis: NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                               ),
                               series: <CartesianSeries>[
                                 LineSeries<double, int>(
@@ -341,11 +341,11 @@ class SensorTrackingScreen extends StatelessWidget {
                           SizedBox(
                             height: 120,
                             child: SfCartesianChart(
-                              primaryXAxis: const NumericAxis(
+                              primaryXAxis: NumericAxis(
                                 // minimum: 0,
                                 // maximum: 1900,
                                 interval: 250,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                                 labelFormat: '{value}',
                                 plotBands: <PlotBand>[
                                   PlotBand(
@@ -355,11 +355,11 @@ class SensorTrackingScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              primaryYAxis: const NumericAxis(
+                              primaryYAxis: NumericAxis(
                                 minimum: -20,
                                 maximum: 20,
                                 interval: 10,
-                                majorGridLines: MajorGridLines(width: 0),
+                                majorGridLines: const MajorGridLines(width: 0),
                               ),
                               series: <CartesianSeries>[
                                 LineSeries<double, int>(

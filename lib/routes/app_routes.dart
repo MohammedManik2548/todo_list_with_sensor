@@ -14,7 +14,7 @@ class AppRoutes {
       page: () => SensorTrackingScreen(),
     ),
     GetPage(name: RouteStrings.entryScreen, page: () => const EntryScreen()),
-    GetPage(name: RouteStrings.todoFirstScreen, page: () => TodoFirstScreen()),
+    GetPage(name: RouteStrings.todoFirstScreen, page: () => const TodoFirstScreen()),
     GetPage(name: RouteStrings.todoHomeScreen, page: () => TodoHomeScreen()),
     GetPage(name: RouteStrings.addTaskScreen, page: () => AddTaskScreen()),
     GetPage(name: RouteStrings.calenderScreen, page: () => CalendarPage()),
