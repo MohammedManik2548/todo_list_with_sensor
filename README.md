@@ -26,7 +26,7 @@ To get started with the Todos Flutter Application, follow these steps:
    ```
 2. **Navigate to the project directory**:
    ```bash
-   cd todos_task
+   cd todo_list_with_sensor
    ```
 3. **Install dependencies**:
    ```bash
